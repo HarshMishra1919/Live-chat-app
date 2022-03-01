@@ -20,29 +20,29 @@ const username = urlParams.get('username');
 const room = urlParams.get('room');
 
 const autoscroll = () => {
-    //new message
-    const $newMessage = $messages.lastElementChild;
-    // Height of the new message
-    const newMessageStyles = getComputedStyle($newMessage);
-    const newMessageMargin = parseInt(newMessageStyles.marginBottom);
-    const newMessageHeight = $newMessage.offsetHeight + newMessageMargin;
+    // //new message
+    // const $newMessage = $messages.lastElementChild;
+    // // Height of the new message
+    // const newMessageStyles = getComputedStyle($newMessage);
+    // const newMessageMargin = parseInt(newMessageStyles.marginBottom);
+    // const newMessageHeight = $newMessage.offsetHeight + newMessageMargin;
 
-    // visible height
-    const visibleHeight = $messages.offsetHeight;
+    // // visible height
+    // const visibleHeight = $messages.offsetHeight;
 
-    // Height of messages container
-    const containerHeight = $messages.scrollHeight;
+    // // Height of messages container
+    // const containerHeight = $messages.scrollHeight;
 
-    // How far have I scrolled
-    const scrollOffset = $messages.scrollTop + visibleHeight;
+    // // How far have I scrolled
+    // const scrollOffset = $messages.scrollTop + visibleHeight;
 
-    if (containerHeight - newMessageHeight <= scrollOffset) {
+    // if (containerHeight - newMessageHeight <= scrollOffset) {
         $messages.scrollTop = $messages.scrollHeight;
-    }
+    // }
 };
 
 socket.on('message', (message) => {
-    console.log(message);
+    // console.log(message);
     const html = Mustache.render(messageTemplate, {
         username: message.username,
         message: message.text,
@@ -53,7 +53,7 @@ socket.on('message', (message) => {
 });
 
 socket.on('locationMessage', (message) => {
-    console.log(message);
+    // console.log(message);
     const html = Mustache.render(locationMessageTemplate, {
         username: message.username,
         url: message.url,
@@ -87,7 +87,7 @@ $messageForm.addEventListener('submit', (e) => {
             return console.log(error);
         }
 
-        console.log('Message delivered!');
+        // console.log('Message delivered!');
     });
 });
 
